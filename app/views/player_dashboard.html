@@ -16,29 +16,16 @@
     <div class="jumbotron">
       <h3>How about a duel?</h3>
       <p>{{playersOnline}} players online!</p>
-      <button class="btn btn-lg">Fight!</button>
+      <button class="btn btn-lg btn-danger">Fight!</button>
     </div>
   </div>
   <div class="col-md-5">
     <h3>Assigned items</h3>
-    <p ng-repeat="item in assignedItems track by $index">{{item.name}}</p>
+    <p ng-repeat="item in player.assignedItems track by $index">{{item.name}}</p>
     <h3>Assigned spells</h3>
-    <p ng-repeat="spell in assignedSpells track by $index">{{spell.name}}</p>
+    <p ng-repeat="spell in player.assignedSpells track by $index">{{spell.name}}</p>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h2>Items</h2>
-    <p ng-repeat="item in playerItems track by $index">{{item.name}}</p>
-  </div>
-  <div class="col-md-6">
-    <h2>Spells</h2>
-    <p ng-repeat="spell in playerSpells track by $index">{{spell.name}}</p>
-  </div>
-</div>
-
-
 
 <div class="row">
   <div class="col-md-12 panel panel-default">

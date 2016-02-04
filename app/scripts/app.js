@@ -17,18 +17,22 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/home.html',
+        controller: 'HomeCtrl'
       })
       .when('/player', {
         templateUrl: 'views/player_dashboard.html',
         controller: 'PlayerDashboardCtrl'
+      })
+      .when('/inventory', {
+        templateUrl: 'views/inventory.html',
+        controller: 'InventoryCtrl'
       })
       .when('/market', {
         templateUrl: 'views/market.html',

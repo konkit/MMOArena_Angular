@@ -1,0 +1,26 @@
+<h1>Market</h1>
+
+<uib-tabset>
+  <uib-tab heading="Items">
+
+    <div class="row">
+      <div class="col-md-12">
+        <p ng-repeat="item in player.items track by $index">
+          {{item.name}}
+          <button class="btn" ng-click="assignItem(item.id)">Assign</button>
+        </p>
+      </div>
+    </div>
+
+  </uib-tab>
+  <uib-tab heading="Spells">
+    <div class="row">
+      <div class="col-md-12">
+        <p ng-repeat="spell in player.spells track by $index">
+          {{spell.name}}
+          <button class="btn" ng-click="assignSpell(item.id)">Assign</button>
+        </p>
+      </div>
+    </div>
+  </uib-tab>
+</uib-tabset>

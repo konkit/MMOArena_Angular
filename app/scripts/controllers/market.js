@@ -8,12 +8,27 @@
  * Controller of the mmoarenaApp
  */
 angular.module('mmoarenaApp')
-  .controller('MarketCtrl', function ($scope) {
-    $scope.player = {
-      name: 'Konkit',
-      level: 1,
-      exp: 0
+  .controller('MarketCtrl', function ($scope, InventoryService, MarketService) {
+
+    $scope.player = InventoryService.get();
+
+    $scope.allItems = MarketService.getItems();
+
+    $scope.allSpells = MarketService.getSpells();
+
+    $scope.buyItem = function(itemId) {
+      MarketService.buyItem(itemId);
     };
 
-    console.log($scope.player);
+    $scope.sellItem = function(itemId) {
+      MarketService.sellItem(itemId);
+    };
+
+    $scope.buySpell = function(spellId) {
+      MarketService.buySpell(spellId);
+    };
+
+    $scope.sellSpell = function(spellId) {
+      MarketService.sellSpell(spellId);
+    };
   });
