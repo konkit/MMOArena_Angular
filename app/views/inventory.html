@@ -1,13 +1,32 @@
-<h1>Market</h1>
+<h1>Inventory</h1>
 
 <uib-tabset>
   <uib-tab heading="Items">
 
     <div class="row">
-      <div class="col-md-12">
-        <p ng-repeat="item in player.items track by $index">
+      <div class="col-md-4">
+        <h3>Equipped items</h3>
+        <p ng-repeat="item in equippedItems track by $index">
           {{item.name}}
-          <button class="btn" ng-click="assignItem(item.id)">Assign</button>
+          <button class="btn" ng-click="unequipItem(item.id)">Unequip</button>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Possessed items</h3>
+        <p ng-repeat="item in unequippedItems track by $index">
+          #{{item.id}}
+          {{item.name}}
+          <button class="btn" ng-click="equipItem(item.id)">Equip</button>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <h3>Other items</h3>
+        <p ng-repeat="item in otherItems track by $index">
+          #{{item.id}}
+          {{item.name}}
+          <button class="btn" ng-click="buyItem(item.id)">Buy item</button>
         </p>
       </div>
     </div>
@@ -16,10 +35,7 @@
   <uib-tab heading="Spells">
     <div class="row">
       <div class="col-md-12">
-        <p ng-repeat="spell in player.spells track by $index">
-          {{spell.name}}
-          <button class="btn" ng-click="assignSpell(item.id)">Assign</button>
-        </p>
+
       </div>
     </div>
   </uib-tab>

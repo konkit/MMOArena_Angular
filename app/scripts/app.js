@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ngStorage'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -33,10 +34,6 @@ angular
       .when('/inventory', {
         templateUrl: 'views/inventory.html',
         controller: 'InventoryCtrl'
-      })
-      .when('/market', {
-        templateUrl: 'views/market.html',
-        controller: 'MarketCtrl'
       })
       .otherwise({
         redirectTo: '/'

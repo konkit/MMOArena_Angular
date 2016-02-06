@@ -8,44 +8,61 @@
  * Controller of the mmoarenaApp
  */
 angular.module('mmoarenaApp')
-  .factory('InventoryService', function () {
+  .factory('InventoryService', function ($http, $localStorage) {
     var inventoryService = {};
 
-    inventoryService.get = function() {
-      return {
-        id: 1234,
-        items: [
-          { id: 1, name: 'Item1' },
-          { id: 2, name: 'Item2' },
-          { id: 3, name: 'Item3' }
-        ],
-        spells: [
-          { id: 1, name: 'Spell1' },
-          { id: 2, name: 'Spell2' },
-          { id: 3, name: 'Spell3' }
-        ]
-      };
+    inventoryService.getItems = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/item/index',
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
     };
 
-    inventoryService.assignItem = function(id) {
-      console.log(id);
+    inventoryService.buyItem = function(id) {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8080/api/item/buy',
+        data: {id: id},
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
     };
 
-    inventoryService.assignSpell = function(id) {
-      console.log(id);
+    inventoryService.equipItem = function(id) {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8080/api/item/equip',
+        data: {id: id},
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
     };
 
-    inventoryService.unassignItem = function(id) {
-      console.log(id);
+    inventoryService.unequipItem = function(id) {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:8080/api/item/unequip',
+        data: {id: id},
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
     };
 
-    inventoryService.unassignSpell = function(id) {
-      console.log(id);
+    inventoryService.getSpells = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/playerSpell/indexJson',
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
     };
 
     return inventoryService;
-
-    //return $resource('player/:playerId.json', {}, {
-    //  query: { method: 'GET', params: { playerId: 'player' }, isArray: true }
-    //});
   });

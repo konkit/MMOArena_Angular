@@ -21,9 +21,9 @@
   </div>
   <div class="col-md-5">
     <h3>Assigned items</h3>
-    <p ng-repeat="item in player.assignedItems track by $index">{{item.name}}</p>
+    <p ng-repeat="item in items track by $index">{{item.name}}</p>
     <h3>Assigned spells</h3>
-    <p ng-repeat="spell in player.assignedSpells track by $index">{{spell.name}}</p>
+    <p ng-repeat="spell in player.spells track by $index">{{spell.name}}</p>
   </div>
 </div>
 

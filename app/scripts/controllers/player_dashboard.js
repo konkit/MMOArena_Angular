@@ -9,10 +9,24 @@
  */
 angular.module('mmoarenaApp')
   .controller('PlayerDashboardCtrl', function ($scope, PlayerService) {
-    $scope.player = PlayerService.get();
 
-    $scope.playersOnline = 0;
+    PlayerService.get()
+      .success(onPlayerDataFetched)
+      .error(onPlayerDataFetchError);
 
-    $scope.expTillNextLevel = 150 * $scope.player.level;
-    $scope.expInPercent = $scope.player.exp * 100 / $scope.expTillNextLevel;
+    function onPlayerDataFetched(data) {
+      $scope.player = data.character;
+      $scope.items = data.items;
+      $scope.spells = data.spells;
+
+      $scope.playersOnline = 0;
+
+      $scope.expTillNextLevel = 150 * $scope.player.level;
+      $scope.expInPercent = $scope.player.exp * 100 / $scope.expTillNextLevel;
+    }
+
+    function onPlayerDataFetchError(data) {
+
+    }
+
   });
