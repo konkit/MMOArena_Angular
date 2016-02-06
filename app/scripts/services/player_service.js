@@ -21,5 +21,25 @@ angular.module('mmoarenaApp')
       });
     };
 
+    playerService.getFightDataJson = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/fight/getPlayerDataJson',
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
+    };
+
+    playerService.getFightDataXML = function(id) {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:8080/api/fight/getPlayerData' + '/' + id,
+        headers: {
+          'Authorization': 'Bearer ' + $localStorage.token
+        }
+      });
+    };
+
     return playerService;
 });
